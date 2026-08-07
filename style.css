@@ -1125,11 +1125,8 @@ footer p{
     }
 
     .header-btn{
-
         width:100%;
-
         justify-content:center;
-
         margin-top:20px;
 
     }
@@ -1381,84 +1378,112 @@ footer p{
             SMALL MOBILE (480px)
 =========================================================*/
 
-@media(max-width:480px){
+/* ==========================================================================
+   MOBILE & TABLET RESPONSIVE STYLES (For Screens smaller than 768px)
+   ========================================================================== */
 
-    .hero-left h1{
-
-        font-size:30px;
-
+@media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+        font-size: 15px;
     }
 
-    .logo h2{
-
-        font-size:20px;
-
+    /* Header Styling */
+    header {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
     }
 
-    .primary-btn,
-    .secondary-btn{
-
-        width:100%;
-
-        text-align:center;
-
+    /* 3-Line & Cross Icon Styling */
+    .menu-toggle {
+        display: block !important;
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 1001;
     }
 
-    .hero-buttons{
-
-        flex-direction:column;
-
+    /* IN staring hide menu */
+    nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #da9494; /* Header background color */
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        z-index: 1000;
+        padding: 20px 0;
     }
 
-    .service-card,
-    .why-card,
-    .process-box,
-    .testimonial-card{
-
-        padding:25px;
-
+    /* when active then showning menu */
+    nav.active {
+        display: block;
     }
 
-    footer{
-
-        padding:40px 15px;
-
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 0;
+        margin: 0;
     }
 
-    .footer-links{
-
-        display:flex;
-
-        flex-direction:column;
-
-        gap:15px;
-
+    /* for call and whatapp icon hide*/
+    .header-btn {
+        display: none; 
+    }
+    
+    .header-btn.active {
+        display: flex;
+        flex-direction: column;
+        padding: 10px 20px;
+        gap: 10px;
     }
 
-    .social-icons{
+    /* All section responsive*/
+    .hero { flex-direction: column-reverse; padding: 30px 15px; text-align: center; gap: 30px; }
+    .hero-left, .hero-right { width: 100% !important; }
+    .hero-left h1 { font-size: 28px; }
+    .hero-buttons { flex-direction: column; gap: 12px; }
+    .hero-buttons a { width: 100%; max-width: 280px; margin: 0 auto; }
+    .hero-right img { max-width: 80%; height: auto; }
+    .search-box { flex-direction: column; gap: 10px; width: 100%; }
+    .search-box input, .search-box button { width: 100%; }
+    .service-container, .why-container { display: flex; flex-direction: column; gap: 20px; width: 100%; }
+    .about { flex-direction: column; padding: 40px 15px; text-align: center; }
+    .about-left, .about-right { width: 100% !important; }
+    .about-left img { max-width: 70%; }
+}
 
-        display:flex;
+/* hide 3line menu button */
+@media (min-width: 769px) {
+    .menu-toggle {
+        display: none;
+    }
+}
 
-        justify-content:center;
-
-        flex-wrap:wrap;
-
-        gap:10px;
-
+@media (max-width: 768px) {
+    header {
+        height: auto !important;
+        padding: 10px 15px !important; 
+        display: flex !important;
+        flex-direction: row !important; 
+        justify-content: space-between !important; 
+        align-items: center !important;
     }
 
-    .whatsapp-float{
-
-        width:55px;
-
-        height:55px;
-
-        font-size:28px;
-
-        right:15px;
-
-        bottom:15px;
-
+    .logo h2 {
+        font-size: 20px !important; 
     }
 
+    .menu-toggle {
+        display: block !important;
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 1001;
+        margin-top: 0 !important;
+    }
 }

@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
-<!-- =====================
-     Heading        
-===================== -->
-        
+    <meta name="google-site-verification" content="ot0pN6ca9vgNB_kGdG0faCok8Rrisy6uBX033rDUfT0" />
+    <!-- =========================
+         Basic Meta Tags
+    ========================== -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -23,55 +23,41 @@
 </head>
 
 <body>
+  
 
     <!-- =========================
         HEADER START
 ========================== -->
 
     <header>
-
         <div class="logo">
-
             <i class="fa-solid fa-laptop"></i>
-
             <h2>Apna Online Seva</h2>
-
         </div>
 
-        <nav>
+        <!-- for Mobile respoinsive menu button -->
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fa-solid fa-bars bar-icon"></i>
+            <i class="fa-solid fa-xmark close-icon" style="display: none;"></i>
+        </div>
 
+        <nav id="nav-menu">
             <ul>
-
                 <li><a href="#home">Home</a></li>
-
                 <li><a href="#services">Services</a></li>
-
                 <li><a href="#about">About</a></li>
-
                 <li><a href="#contact">Contact</a></li>
-
             </ul>
-
         </nav>
 
-        <div class="header-btn">
-
+        <div class="header-btn" id="header-buttons">
             <a href="tel:+918188875296" class="call-btn">
-                <i class="fa-solid fa-phone"></i>
-                Call Now
+                <i class="fa-solid fa-phone"></i> Call Now
             </a>
-
-
-            <a href="https://wa.me/918188875296?text=Namaste,%20Mujhe%20Apna%20Online%20Seva%20ki%20service%20ke%20baare%20me%20jankari%20chahiye."
-                target="_blank" class="whatsapp-btn">
-
-                <i class="fa-brands fa-whatsapp"></i>
-                WhatsApp
-
+            <a href="https://wa.me." target="_blank" class="whatsapp-btn">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp
             </a>
-
         </div>
-
     </header>
 
     <!-- =========================
@@ -479,21 +465,27 @@
             <p>We're here to help you.</p>
         </div>
 
-        <form>
+     <form>
+        
+            <!-- 2. Hidden input field to store your unique Access Key -->
+            <input type="hidden" name="access_key" value="1999fb95-b1a7-47c1-9941-a0eca88ad196">
 
-            <input type="text" placeholder="Your Name">
+            <!-- 3. Added 'name' attributes for identifying data and 'required' for validation -->
+            <input type="text" name="name" placeholder="Your Name" required>
 
-            <input type="email" placeholder="Email Address">
+            <input type="email" name="email" placeholder="Email Address" required>
 
-            <input type="tel" placeholder="Mobile Number">
+            <input type="tel" name="phone" placeholder="Mobile Number" required>
 
-            <textarea rows="5" placeholder="Write your message..."></textarea>
+            <textarea name="message" rows="5" placeholder="Write your message..." required></textarea>
 
             <button type="submit">Send Message</button>
 
         </form>
 
     </section>
+
+
 
     <!-- =========================
         FOOTER

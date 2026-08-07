@@ -122,50 +122,52 @@ if(searchInput){
 // 2. CONTACT FORM VALIDATION
 // ==========================================
 
+// ==========================================
+// 2. CONTACT FORM SUBMISSION WITH EMAIL
+// ==========================================
 const contactForm = document.querySelector(".contact form");
 
+if (contactForm) {
+    contactForm.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevents page reload
 
-if(contactForm){
-
-
-    contactForm.addEventListener("submit", function(event){
-
-
-        event.preventDefault();
-
-
-        let name = document.querySelector(".contact input[type='text']").value;
-
-        let email = document.querySelector(".contact input[type='email']").value;
-
-        let mobile = document.querySelector(".contact input[type='tel']").value;
-
-
-        if(name === "" || email === "" || mobile === ""){
-
-
-            alert("Please fill all required fields");
-
-
+        const formData = new FormData(contactForm);
+        const submitBtn = contactForm.querySelector("button[type='submit']");
+        
+        if(submitBtn) {
+            submitBtn.innerText = "Sending...";
+            submitBtn.disabled = true;
         }
 
-
-        else{
-
-
-            alert("Thank you! Your message has been submitted.");
-
-
-            contactForm.reset();
-
-
-        }
-
-
+        // Send data directly to Web3Forms API
+        fetch("https://web3forms.com", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert("Thank you! Your message has been sent successfully to Ankit.");
+                contactForm.reset(); // Clear form inputs
+            } else {
+                alert("Something went wrong. Please try again.");
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("Network error. Please check your connection.");
+        })
+        .finally(() => {
+            if(submitBtn) {
+                submitBtn.innerText = "Send Message";
+                submitBtn.disabled = false;
+            }
+        });
     });
-
-
 }
+
+
+
 /*=========================================================
         APNA ONLINE SEVA
         SCRIPT.JS PART - 3
@@ -186,18 +188,39 @@ if(contactForm){
 // Agar future me hamburger button add karenge
 // to ye code uske liye ready rahega
 
-const menuBtn = document.querySelector(".menu-btn");
-const navMenu = document.querySelector("nav ul");
+// ==========================================
+// 1. MOBILE MENU TOGGLE (UPDATED WITH CROSS BUTTON)
+// ==========================================
 
+const mobileMenu = document.getElementById('mobile-menu');
+const navMenuId = document.getElementById('nav-menu');
+const barIcon = document.querySelector('.bar-icon');
+const closeIcon = document.querySelector('.close-icon');
 
-if(menuBtn && navMenu){
-
-    menuBtn.addEventListener("click", function(){
-
-        navMenu.classList.toggle("active");
-
+if (mobileMenu && navMenuId) {
+    mobileMenu.addEventListener('click', function() {
+        // menu on/off
+        navMenuId.classList.toggle('active');
+        
+        // for cross button
+        if (navMenuId.classList.contains('active')) {
+            barIcon.style.display = 'none';
+            closeIcon.style.display = 'block';
+        } else {
+            barIcon.style.display = 'block';
+            closeIcon.style.display = 'none';
+        }
     });
 
+    // hide menu for click
+    const navLinks = navMenuId.querySelectorAll('a');
+    navLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+            navMenuId.classList.remove('active');
+            barIcon.style.display = 'block';
+            closeIcon.style.display = 'none';
+        });
+    });
 }
 
 
@@ -326,3 +349,4 @@ darkBtn.addEventListener("click", function(){
 
 
 });
+
